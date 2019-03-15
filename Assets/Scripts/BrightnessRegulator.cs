@@ -4,7 +4,7 @@ using System.Collections;
 public class BrightnessRegulator : MonoBehaviour
 {
     // Materialを入れる
-    Material myMaterial;
+ Material myMaterial;
 
     // Emissionの最小値
     private float minEmission = 0.3f;
