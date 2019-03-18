@@ -13,6 +13,8 @@ public class FripperController : MonoBehaviour
     {
         this.myHingeJoint = this.GetComponent<HingeJoint>();
         SetAngle(this.defaultAngle);
+
+
     }
 
     // Update is called once per frame
@@ -38,8 +40,50 @@ public class FripperController : MonoBehaviour
         {
             SetAngle(this.defaultAngle);
         }
-    }
 
+//        Touch mytouch = Input.GetTouch(0);
+        Touch[] myTouches = Input.touches;
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            switch (myTouches[i].phase)
+            {
+                case TouchPhase.Began:
+                    if (myTouches[i].position.x > Screen.width / 2&&tag == "RightFripperTag")
+                    {
+                        SetAngle(this.flickAngle);
+                    }
+                    if (myTouches[i].position.x < Screen.width / 2 && tag == "LeftFripperTag")
+                    {
+                        SetAngle(this.flickAngle);
+                    }
+                    break;
+                case TouchPhase.Ended:
+                    if (tag == "LeftFripperTag")
+                    {
+                        SetAngle(this.defaultAngle);
+                    }
+                    if (tag == "RightFripperTag")
+                    {
+                        SetAngle(this.defaultAngle);
+                    }
+                    break;
+            /*    case TouchPhase.Moved:
+                    if (myTouches[i].position.x > Screen.width / 2 && tag == "RightFripperTag")
+                    {
+                        SetAngle(this.flickAngle);
+                    }
+                    if (myTouches[i].position.x < Screen.width / 2 && tag == "LeftFripperTag")
+                    {
+                        SetAngle(this.flickAngle);
+                    }
+                    break;*/
+            }
+
+                
+
+        }
+    }
+    
     //フリッパーの傾きを設定
     public void SetAngle(float angle)
     {
