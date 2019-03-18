@@ -46,8 +46,8 @@ public class BrightnessRegulator : MonoBehaviour
     void Update()
     {
 
-       // if (this.degree >= 0)
-      //  {
+        if (this.degree >= 0)
+        {
             // 光らせる強度を計算する
             Color emissionColor = this.defaultColor * (this.minEmission + Mathf.Sin(this.degree * Mathf.Deg2Rad) * this.magEmission);
 
@@ -56,7 +56,7 @@ public class BrightnessRegulator : MonoBehaviour
 
             //現在の角度を小さくする
             this.degree -= this.speed;
-        //}
+        }
     }
 
     //衝突時に呼ばれる関数
