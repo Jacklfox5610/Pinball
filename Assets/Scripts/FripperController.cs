@@ -43,11 +43,14 @@ public class FripperController : MonoBehaviour
 
 //        Touch mytouch = Input.GetTouch(0);
         Touch[] myTouches = Input.touches;
+
         for (int i = 0; i < Input.touchCount; i++)
         {
             switch (myTouches[i].phase)
             {
+                //タッチされた場所が右/左画面かつ右/左フリッパーであれば、右/左フリッパーをあげる。）
                 case TouchPhase.Began:
+
                     if (myTouches[i].position.x > Screen.width / 2&&tag == "RightFripperTag")
                     {
                         SetAngle(this.flickAngle);
@@ -57,26 +60,33 @@ public class FripperController : MonoBehaviour
                         SetAngle(this.flickAngle);
                     }
                     break;
-                case TouchPhase.Ended:
-                    if (tag == "LeftFripperTag")
+
+                //タッチ画面が別の画面に移動したら、フリッパーを下げる。
+                case TouchPhase.Moved:
+                    if (myTouches[i].position.x < Screen.width / 2 && tag == "RightFripperTag")
                     {
                         SetAngle(this.defaultAngle);
                     }
-                    if (tag == "RightFripperTag")
+                    if (myTouches[i].position.x > Screen.width / 2 && tag == "LeftFripperTag")
                     {
                         SetAngle(this.defaultAngle);
                     }
                     break;
-            /*    case TouchPhase.Moved:
-                    if (myTouches[i].position.x > Screen.width / 2 && tag == "RightFripperTag")
-                    {
-                        SetAngle(this.flickAngle);
-                    }
+                //タッチし終わったとき、タッチを離した場所 （positionでよい)かつ右/左フリッパーであれば、右/左フリッパーを下げる。
+                case TouchPhase.Ended:
+
                     if (myTouches[i].position.x < Screen.width / 2 && tag == "LeftFripperTag")
                     {
-                        SetAngle(this.flickAngle);
+                        SetAngle(this.defaultAngle);
                     }
-                    break;*/
+                    
+
+                    if (myTouches[i].position.x > Screen.width / 2 && tag == "RightFripperTag")
+                    {
+                        SetAngle(this.defaultAngle);
+                    }
+                    break;
+
             }
 
                 

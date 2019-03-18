@@ -64,7 +64,6 @@
     <Compile Include="Assets\Scripts\BrightnessRegulator.cs" />
     <Compile Include="Assets\Scripts\CloudController.cs" />
     <Compile Include="Assets\Scripts\FripperController.cs" />
-    <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\StarController.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/shirakawataihei/UnityProject/Pinball/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
